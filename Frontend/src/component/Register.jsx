@@ -10,18 +10,26 @@ function Register() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  //click to login for registered users
+    const handleSign = ()=>{
+    return navigate('/login');
+   }
+ 
   //asynchronouse fuction for fetch api response to request
   async function signup(event) {
     event.preventDefault();
 
-    const formRegCon = document.querySelector("#register_form"),
-      input = document.querySelectorAll("input:not([type= 'checkbox'])"),
+    const input = document.querySelectorAll("input:not([type= 'checkbox'])"),
       check = document.querySelector("#check"),
       spans = document.getElementById("spans"),
       label = document.getElementById("register_exception");
 
     // checked box 
-    if (check.checked) {
+    if (check.checked &&
+      username !== "" &&
+      isNaN(username) &&
+      password.length >= 5 &&
+      email !== "") {
       spans.innerHTML = "";
       const options = {
         method: "POST",
@@ -43,36 +51,59 @@ function Register() {
       if (response.ok) {
         const ResData = response.json();
         console.log(ResData);
-        formRegCon.style.display = "none";
-        input.forEach((item) => {
-          item.style.border = "1px solid green";
-          label.innerHTML = "All inputs are correct!";
-          label.style.color = "green";
-          return "registeration successful!";
-        });
+      input.forEach((item) => (item.style.border = "1px solid green"));
+      label.innerHTML = "All inputs are correct!";
+      label.style.color = "green";
+      spans.innerHTML = "";
+      setTimeout(() => {
+        spans.innerHTML = "pls wait, creating an account...";
+        spans.style.color = "blue";
+        label.innerHTML = "";
+      }, 3000);
+      setTimeout(() => {
+        spans.innerHTML = "Account created!";
+        spans.style.color = "green";
+      }, 5000);
+      setTimeout(() => {
         return navigate("/login");
+      }, 7000);
       } 
       
       else {
-        input.forEach((item) => {
-          item.style.border = "1px solid red";
-          label.innerHTML = "Invalid input(s)! Pls try again.";
-         
-        });
+         label.innerHTML = "Backend error has occurred!";
+          return navigate('/');
+         }
       }
-    }
-    // accessing empty inputs and uchecked box
-    else if (!check.checked){
-      input.forEach(
-      item => item.style.border = "1px solid red");
-      formRegCon.style.display = "block";
-      label.innerHTML = "Input field(s) can't be empty!";
+      // accessing empty inputs and unchecked box
+    else if (
+      !check.checked &&
+      (username !== "" ||
+        password !== "" ||
+        password.length >= 5 ||
+        email !== "")
+    ) {
+      input.forEach((item) => (item.style.border = "1px solid red"));
       spans.innerHTML = "The box is unchecked yet!";
-      spans.style.color = "red";     
+      spans.style.color = 'red';
+      return navigate("/");
+    } else if (
+      check.checked &&
+      (username == "" ||
+        password.length < 5 ||
+        email == "")
+    ) {
+      spans.innerHTML = "Input field(s) can't be empty!";
+      spans.style.color = "red";
+      label.innerHTML = "Password must be greater than 4 characters!";
+      return navigate('/')
+    } else {
+      input.forEach((item) => (item.style.border = "1px solid red"));
+      label.innerHTML = "Invalid input(s)! Pls try again.";
+      spans.innerHTML = "The box is unchecked yet!";
+      spans.style.color = "red";
+      return navigate("/");
     }
-    else{
-      return 'Registration failed due to glitch!';
-    }
+  
   }
 
   return (
@@ -99,7 +130,7 @@ function Register() {
           id="email"
           placeholder="Enter your Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)} 
+          onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">
           password<span>*</span>
@@ -110,7 +141,7 @@ function Register() {
           id="pass-reg"
           placeholder="Enter your Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)} 
+          onChange={(e) => setPassword(e.target.value)}
         />
         <div className={styles.box}>
           <input type="checkbox" id="check" />
@@ -120,15 +151,17 @@ function Register() {
           </p>
         </div>
 
-        <button type="submit" id='btn'>
+        <button type="submit" id="btn">
           Sign Up
         </button>
         <p>Already registered?</p>
-        <a href="/login">Sign In</a>
+        <a id="btn" onClick={handleSign}>Sign In</a>
         <i id="spans"></i>
         <i className={styles.register_exception} id="register_exception"></i>
       </form>
     </main>
   );
 }
+
 export default Register;
+

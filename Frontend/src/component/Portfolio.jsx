@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import  styles from "./Port.module.css";
-
 //some variable names used dynamically
 const name = "PORTFOLIO";
 const date = new Date().getFullYear();
@@ -9,29 +8,46 @@ const valName = 'MONGO SERVER 2';
 
 //component portfolio
 function Portfolio() {
-  const [init, setInit] = useState("https://portfolio-ogaraga.vercel.app");
-
-  const [redirect, setRedirect] = useState("/portfolio");
-
+  const [init, setInit] = useState("https://portfolio-ogaraga.vercel.app/home.html");
+  // const [toggleOn, setToggleOn] =useState(true);
+  // const [toggleOff, setToggleOff] =useState(false);
   const navigate = useNavigate();
 
+  const toggleOnClick =()=>{
+    const Port = document.querySelector('#port');
+    const toggleOn = document.querySelector('.fa-toggle-on');
+    const toggleOff = document.querySelector('.fa-toggle-off');
+    toggleOn.style.display = 'none';
+    toggleOff.style.display = 'block';
+    Port.style.backgroundColor = 'black';
+    Port.style.color = 'white';
+
+  }
+  
+  const toggleOffClick =()=>{
+    const Port = document.querySelector('#port');
+    const toggleOn = document.querySelector('.fa-toggle-on');
+    const toggleOff = document.querySelector('.fa-toggle-off');
+    toggleOff.style.display = 'none';
+    toggleOn.style.display = 'block';
+    Port.style.backgroundColor = 'aliceblue';
+    Port.style.color = 'black';
+  }
   const handleClick = (e) => {
     e.preventDefault();
-
-    setInit("https://portfolio-ogaraga.vercel.app");
+    navigate(setInit("https://portfolio-ogaraga.vercel.app/home.html"));
   };
-
-  useEffect(() => {
-    if (redirect) 
-      setTimeout(() => {
-        setRedirect(navigate("/"));
-      }, 60000);
-  }, []);
 
   return (
     <>
-    <nav className={styles.nav}>Navigation page</nav>
-    <main className={styles.port}>
+    <nav className={styles.nav}>
+      <h1>Navigation page</h1>
+      <div className={styles.toggle}>
+      <i className="fa-solid fa-toggle-on" onClick={toggleOnClick}></i>
+      <i className="fa-solid fa-toggle-off" onClick={toggleOffClick}></i>
+     </div>
+    </nav>
+    <main className={styles.port} id="port" >
       <div className={styles.go_img}>
         <img
           className={styles.image}
@@ -42,9 +58,8 @@ function Portfolio() {
         </div>
       <div className={styles.contents}>
         <h1>
-          WELCOME TO MY PORTFOLIO, YOU MAY
-          <p style={{ color: "coral" }}>right-click </p>ON
-          <em style={{ color: "coral" }}>  {name} </em>BELLOW TO PROCEED!
+          Welcome to my portfolio.<p style={{ color: "coral" }}>Right-click </p>on
+          <em style={{ color: "coral" }}>  {name} </em>bellow to proceed!
         </h1> 
         <Link to={init} target="_blank" onClick={handleClick}>
           portfolio<hr />

@@ -31,7 +31,7 @@ router.post('/', async (req, res, next) => {
             }
             const token = JWT.sign(userPayload, jwtSecret);
             await user.save();
-            return res.status(200).json({ user, Token: token });
+            return res.status(200).cookie({Token: token }).json(user);
 
         } catch (error) {
             res.status(400).json(error.message)
@@ -57,7 +57,7 @@ router.post('/login', async (req, res, next) => {
     const email = req.body.email;
     const hashedPassword = await bcrypt.hash(password, salt);
     const userDetail = await User.findOne({ email });
-    if (!userDetail) {
+     if (!userDetail) {
         return res.status(404).json({ message: "user not found" });
     }
     else {
@@ -68,9 +68,11 @@ router.post('/login', async (req, res, next) => {
     {
         res.status(200).json({
             email,
-            password: hashedPassword
+            password: hashedPassword, 
         });
     }
+    
+    
     next()
 });
 router.get('/login', async (req, res) => {
@@ -90,7 +92,7 @@ router.get('/portfolio', (req, res) => {
         const token = req.header(jwtHeaderKey);
         const tokenVerified = JWT.verify(token, jwtSecretKey);
         if (tokenVerified) {
-            res.redirect('http://port-ogaraga.vercel.app')
+            res.cookie(tokenVerified).json('User Valid!')
             res.status(200).send('User access granted!');
         }
         else {

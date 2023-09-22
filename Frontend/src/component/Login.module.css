@@ -1,71 +1,76 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    background-color: #3e5151;
-    min-width: 100vw;
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+ background-color:aliceblue;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.login_form {
+  background-color:aliceblue;
+  width: 330px;
+  margin: 10px auto;
+  height: 330px;
+  padding: 10px;
+  border: 1px solid  rgba(128, 128, 128, 0.445);
+}
+.login_exception{
+  color: red;
+  text-align: center;
+  margin: 10px auto;
+}
+.login_form h1 {
+  text-align: center;
+  color:  rgba(128, 128, 128, 0.445);
+  text-transform: uppercase;
+  margin: 10px auto;
+}
+.login_form form{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
-  }
-  
-  .login_form {
-    background-color: azure;
-    min-width: 90%;
-    margin: 10px auto;
-    min-height: 60%;
-    padding: 10px;
-  }
-  .login_exception{
-    color: red;
-    text-align: center;
-    margin: 10px auto;
-  }
-  .login_form h1 {
-    text-align: center;
-    color: #3e5151;
+    flex-direction: column;
+    position: relative;
+}
+.login_form label{
     text-transform: uppercase;
+    margin-top: 10px;
+    color:  rgba(128, 128, 128, 0.445);
+}
+.login_form label span{
+    color: red
+}
+.login_form input{
+    padding: 10px;
+    width: 70%;
+    border: 1px solid  rgba(128, 128, 128, 0.445);
+    outline: none;
+    border-width: 1px;
+    
+}
+.login_form input::placeholder{
+  color:  rgba(128, 128, 128, 0.445);
+}
+.login_form button{
+    padding: 10px;
     margin: 10px auto;
-  }
-  .login_form form{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-  }
-  .login_form label{
-      text-transform: uppercase;
-      margin-top: 10px;
-      color: #3e5151;
-  }
-  .login_form label span{
-      color: red
-  }
-  .login_form input{
-      padding: 10px;
-      width: 70%;
-      border: 1px solid #3e5151 ;
-      outline: none;
-      border-width: 1px;
-      
-  }
-  .login_form button{
-      padding: 10px;
-      margin: 10px auto;
-      width: 50%;
-      background-color: #3e5151;
-      color: aliceblue;
-      text-transform: uppercase;
-      border: none;
-      outline: none;
-      cursor: pointer;
-  }
-  .login_form button:hover{
-  background-color: #6C5B7B;
-  color:#FF8C00 ;
-  }
+    width: 50%;
+    background-color:  rgba(128, 128, 128, 0.445);
+    color: aliceblue;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.login_form button:hover{
+background-color: aliceblue;
+border: 1px solid  rgba(128, 128, 128, 0.445);;
+color:green ;
+}
