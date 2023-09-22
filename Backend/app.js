@@ -17,7 +17,7 @@ connectionDb;
 //adding middlware
 app.use(cors({origin:'http://localhost:5173'}));
 app.use(express.json({ limit: '100mb' }));
-app.use('/Frontend', express.static(path.join(__dirname, 'src')))
+app.use('/Frontend', express.static(path.join(__dirname, 'public')))
 app.use('/', Routes);  
 
 
