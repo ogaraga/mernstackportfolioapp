@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Mern Stack Portfolio App Project ",
   "main": "app.js",
+  "homepage": "https://mernstackportfolioapp.vercel.app/",
   "scripts": {
     "server": "nodemon app.js"
   },
