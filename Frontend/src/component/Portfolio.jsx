@@ -1,6 +1,7 @@
 import { useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import  styles from "./Port.module.css";
+
 //some variable names used dynamically
 const name = "PORTFOLIO";
 const date = new Date().getFullYear();
@@ -8,7 +9,7 @@ const valName = 'MONGO SERVER 2';
 
 //component portfolio
 function Portfolio() {
-  const [init, setInit] = useState("ogaraga.github.io/ogaraga-portfolio/");
+  const [init, setInit] = useState("");
    const navigate = useNavigate();
 
   const toggleOnClick =()=>{
@@ -30,16 +31,16 @@ function Portfolio() {
     Port.style.backgroundColor = 'aliceblue';
     Port.style.color = 'black';
   }
-  const handleOver = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    navigate(setInit("ogaraga.github.io/ogaraga-portfolio/"));
+    navigate(setInit("https://ogaraga.github.io/ogaraga-portfolio/home.html"));
 
     function setTimeOver() {
       return navigate('/')
     }
 //timeout session being called
   
-    setTimeout(setTimeOver, 10000);
+    setTimeout(setTimeOver, 2000000);
   };
 
   
@@ -65,10 +66,10 @@ function Portfolio() {
         </div>
       <div className={styles.contents}>
         <h1>
-          Welcome to my portfolio.<p style={{ color: "coral" }}>Right-click </p>on
+          Welcome to my portfolio.<p style={{ color: "coral" }}>Click </p>on
           <em style={{ color: "coral" }}>  {name} </em>bellow to proceed!
         </h1> 
-        <Link to={init} target="_blank" onMouseOver={handleOver}>
+        <Link to={init} target="_blank" onMouseOver={handleClick}>
           portfolio<hr />
         </Link>
 
