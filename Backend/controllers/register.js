@@ -8,7 +8,8 @@ const setPost = ('/', async (req, res, next) => {
     const { username, email, password } = req.body;
     const user = await User.findOne({ email });
     if (user) {
-        return res.status(401).send('User already exists!');
+        res.status(401).send('User already exists!');
+        return res.redirect('/');
     }
     else {
 
@@ -27,8 +28,6 @@ const setPost = ('/', async (req, res, next) => {
                 id: user._id
             }
             const token = JWT.sign(userPayload, jwtSecret);
-            user.token = token;
-            user.password = undefined;
             await user.save();
             return res.status(200).json({user, Token: token, }); 
 

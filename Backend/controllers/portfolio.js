@@ -9,9 +9,7 @@ const getPort = ('/portfolio', (req, res) => {
         const tokenVerified = JWT.verify(token, jwtSecretKey);
         if (tokenVerified) {
             res.cookie(tokenVerified).json('User Valid!');
-             User.tokenVerified = tokenVerified;
-             User.Password = undefined;
-            
+                        
         }
         else {
             res.redirect('/')
