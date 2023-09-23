@@ -8,10 +8,8 @@ const valName = 'MONGO SERVER 2';
 
 //component portfolio
 function Portfolio() {
-  const [init, setInit] = useState("https://portfolio-ogaraga.vercel.app/home.html");
-  // const [toggleOn, setToggleOn] =useState(true);
-  // const [toggleOff, setToggleOff] =useState(false);
-  const navigate = useNavigate();
+  const [init, setInit] = useState("ogaraga.github.io/ogaraga-portfolio/");
+   const navigate = useNavigate();
 
   const toggleOnClick =()=>{
     const Port = document.querySelector('#port');
@@ -23,8 +21,7 @@ function Portfolio() {
     Port.style.color = 'white';
 
   }
-  
-  const toggleOffClick =()=>{
+    const toggleOffClick =()=>{
     const Port = document.querySelector('#port');
     const toggleOn = document.querySelector('.fa-toggle-on');
     const toggleOff = document.querySelector('.fa-toggle-off');
@@ -33,10 +30,20 @@ function Portfolio() {
     Port.style.backgroundColor = 'aliceblue';
     Port.style.color = 'black';
   }
-  const handleClick = (e) => {
+  const handleOver = (e) => {
     e.preventDefault();
-    navigate(setInit("https://portfolio-ogaraga.vercel.app/home.html"));
+    navigate(setInit("ogaraga.github.io/ogaraga-portfolio/"));
+
+    function setTimeOver() {
+      return navigate('/')
+    }
+//timeout session being called
+  
+    setTimeout(setTimeOver, 10000);
   };
+
+  
+
 
   return (
     <>
@@ -61,7 +68,7 @@ function Portfolio() {
           Welcome to my portfolio.<p style={{ color: "coral" }}>Right-click </p>on
           <em style={{ color: "coral" }}>  {name} </em>bellow to proceed!
         </h1> 
-        <Link to={init} target="_blank" onClick={handleClick}>
+        <Link to={init} target="_blank" onMouseOver={handleOver}>
           portfolio<hr />
         </Link>
 
