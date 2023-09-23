@@ -1,23 +1,22 @@
 const User = require('../model/Users');
 const JWT = require('jsonwebtoken');
+const userLoggedIn = require('./login')
 
-const getPort = ('/portfolio', (req, res) => {
+const getPort = ('/portfolio', userLoggedIn, (req, res, next) => {
     const jwtHeaderKey = process.env.HEADER_KEY;
-    const jwtSecretKey = process.env.SECRET_KEY;
-    try {
-        const token = req.header(jwtHeaderKey);
+    const jwtSecretKey = process.env.SECRET_KEY;    
+    const token = req.headers(jwtHeaderKey);
+    if(!token)
+    return res.sendStatus(404);
+        try {
         const tokenVerified = JWT.verify(token, jwtSecretKey);
-        if (tokenVerified) {
-            res.cookie(tokenVerified).json('User Valid!');
-                        
-        }
-        else {
-            res.redirect('/')
-            res.status(400).send('Access strictly forbidden')
-        }
+         res.cookie(tokenVerified).json('Access Granted!');
+            User.tokenVerified = tokenVerified;
+            User.password = password;                           
+               
     } catch (error) {
         res.status(400).send(error.message);
     }
-
+next()
 })
 module.exports = getPort;

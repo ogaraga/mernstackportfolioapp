@@ -47,24 +47,17 @@ function Login() {
           label.innerHTML = 'Password must be greater than 4 characters!';
            return navigate("/login");
          }
-         else if(email === '' && password.length >= 5){
+         else if(email === '' && (password.length >= 5)){
            spans.innerHTML = "";
            input.forEach((item) => (item.style.border = "1px solid red"))
            label.innerHTML = 'Email input-field must not be empty!';
             return navigate("/login");
           }
-         
-         else {
-           spans.innerHTML = "";
-           input.forEach((item) => (item.style.border = "1px solid red"));
-           label.innerHTML = "Wrong input(s)! Pls try again or create an account.";
-           return navigate("/login");
-         }
-           
+                            
       }
       else{
         input.forEach(item=>item.style.border = '1px solid red');
-        label.innerHTML = "Backend response was bad!, try again";
+        label.innerHTML = "Backend authentication issue!, pls try again or create an account.";
         return navigate('/login');
       }    
 

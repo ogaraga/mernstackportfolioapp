@@ -5,8 +5,8 @@ const salt = bcrypt.genSaltSync(10);
 
 const login_post = ('/login', async (req, res, next) => {
     const {email, password} = req.body;    
-    // const hashedPassword = await bcrypt.hash(password, salt);
-    const userDetail = await User.findOne({ email }); console.log(userDetail)
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const userDetail = await User.findOne({ email }); 
    try{
     if (!email && password !== userDetail.password ) {
        res.status(404).json({ message: "user not found" });
@@ -14,7 +14,10 @@ const login_post = ('/login', async (req, res, next) => {
     else {
 
         if (await bcrypt.compare(password, userDetail.password))
-            res.status(200).json(userDetail)
+            res.status(200).json({
+        email,
+        password: hashedPassword
+        });
             
     next()
     }  
