@@ -1,8 +1,8 @@
 import './App.css'
-import Register from './component/Register';
-import Portfolio from './component/Portfolio';
+import Register from './component/Register.jsx';
+import Portfolio from './component/Portfolio.jsx';
 import { Routes, Route } from 'react-router-dom';
-import Login from './component/Login';
+import Login from './component/Login.jsx';
 
 function App() {
 
