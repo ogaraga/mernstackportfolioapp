@@ -1,8 +1,8 @@
 //importing packages
 const router = require('express').Router();
-const {setPost,getPost} = require('../controllers/register');
-const {login_get, login_post} = require('../controllers/login');
-const getPort = require('../controllers/portfolio');
+const {setPost,getPost} = require('../controllers/controllerRegister');
+const { login_get, login_post } = require('../controllers/controllerLogin');
+const getPort = require('../controllers/controllerPortfolio');
 
 //register routes
 router.post('/', setPost);

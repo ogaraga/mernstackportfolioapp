@@ -1,6 +1,6 @@
 const User = require('../model/Users');
 const JWT = require('jsonwebtoken');
-const userLoggedIn = require('./login')
+const userLoggedIn = require('./controllerLogin')
 
 const getPort = ('/portfolio', userLoggedIn, (req, res, next) => {
     const jwtHeaderKey = process.env.HEADER_KEY;
@@ -15,7 +15,7 @@ const getPort = ('/portfolio', userLoggedIn, (req, res, next) => {
             User.password = password;                           
                
     } catch (error) {
-        res.status(400).send(error.message);
+            res.status(400).send({ message: 'A glitch happened!' });
     }
 next()
 })

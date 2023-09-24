@@ -32,7 +32,7 @@ const setPost = ('/', async (req, res, next) => {
             return res.status(200).json({ user, Token: token, });
 
         } catch (error) {
-            res.status(400).json(error.message)
+            res.status(400).json({Message: 'Something went wrong!'})
         }
     }
 
