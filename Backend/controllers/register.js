@@ -19,7 +19,7 @@ const setPost = ('/', async (req, res, next) => {
                 username,
                 email,
                 password: hashedPassword
-            });
+            })
             //generate jwt token for user
             let jwtSecret = process.env.SECRET_KEY;
             let userPayload = {
@@ -34,7 +34,7 @@ const setPost = ('/', async (req, res, next) => {
         } catch (error) {
             res.status(400).json(error.message)
         }
-    };
+    }
 
 
     next();
