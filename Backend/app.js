@@ -6,7 +6,7 @@ const cors = require('cors');
 const PORT = process.env.PORT || 8080
 const connectionDb = require('./config/dbase');
 const Routes = require('./routes/Routes');
-const errorHandler = require('./middleware/errors');
+const errorHandler = require('./middleware/middlewareErrors');
 
 //initialize express
 const app = express(); 

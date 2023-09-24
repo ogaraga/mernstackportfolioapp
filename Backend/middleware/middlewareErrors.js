@@ -3,7 +3,7 @@ const errorHandler = (err, req, res,next)=>{
     res.statusCode(statusCode)
     res.json({
         message: err.message,
-        stack: process.env.ERROR_NODE === development? null : err.stack 
+        stack: process.env.ERROR_NODE === production? null : err.stack 
     })
     next();
 }

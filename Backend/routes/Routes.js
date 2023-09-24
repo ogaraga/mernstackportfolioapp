@@ -10,7 +10,7 @@ router.get('/', getPost);
 
 //login routes
 router.post('/login', login_post);
-router.get('/login', login_get); 
+router.get('/login', login_get);  
 
 
 //portfolio route 
