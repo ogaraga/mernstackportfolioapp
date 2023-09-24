@@ -15,7 +15,7 @@ const setPost = ('/', async (req, res, next) => {
 
         try {
             const hashedPassword = await bcrypt.hash(password, salt)
-             const user = new User({
+            const user = new User({
                 username,
                 email,
                 password: hashedPassword
@@ -29,7 +29,7 @@ const setPost = ('/', async (req, res, next) => {
             }
             const token = JWT.sign(userPayload, jwtSecret);
             await user.save();
-            return res.status(200).json({user, Token: token, }); 
+            return res.status(200).json({ user, Token: token, });
 
         } catch (error) {
             res.status(400).json(error.message)
@@ -47,5 +47,5 @@ const getPost = ('/', async (req, res) => {
         res.status(400).json({ Message: 'Something went wrong!' })
     }
 })
-module.exports = {setPost, getPost};
+module.exports = { setPost, getPost };
 
