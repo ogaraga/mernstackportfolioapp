@@ -41,13 +41,13 @@ function Login() {
             return navigate("/portfolio");
           }, 7000);
         }
-        else if(email !== '' && (password.length < 5 || password === '')){
+        else if(email !== '' && password.length < 5 ){
           spans.innerHTML = "";
           input.forEach((item) => (item.style.border = "1px solid red"))
           label.innerHTML = 'Password must be greater than 4 characters!';
            return navigate("/login");
          }
-         else if(email === '' && (password.length >= 5)){
+         else if(email === '' && password.length === ''){
            spans.innerHTML = "";
            input.forEach((item) => (item.style.border = "1px solid red"))
            label.innerHTML = 'Email input-field must not be empty!';
