@@ -13,7 +13,7 @@ body {
 }
 
 .register_form {
-  background-color: aliceblue;
+  background-color: rgba(128, 128, 128, 0.185);
   width: 90%;
   margin: 10px auto;
   min-height: 60%;

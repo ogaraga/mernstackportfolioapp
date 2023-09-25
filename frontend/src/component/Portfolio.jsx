@@ -40,7 +40,7 @@ function Portfolio() {
     }
 //timeout session being called
   
-    setTimeout(setTimeOver, 2000000);
+    setTimeout(setTimeOver, 20000);
   };
 
   
