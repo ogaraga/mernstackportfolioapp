@@ -34,4 +34,22 @@ const login_get = ('/login', async (req, res) => {
         res.status(400).json({ Message: 'Something went wrong!' })
     }
 });
-module.exports = { login_post, login_get };
+const login_put = ('/login/:_id', async (req, res) => {
+    try {
+        const allLoginUsers = await User.findOne();
+        res.status(200).json(allLoginUsers);
+    } catch (error) {
+        res.status(400).json({ Message: 'Something went wrong!' })
+    }
+});
+
+const login_delete = ('/login/:_id', async (req, res) => {
+    try {
+        const allLoginUsers = await User.findOne();
+        res.status(200).json(allLoginUsers);
+    } catch (error) {
+        res.status(400).json({ Message: 'Something went wrong!' })
+    }
+});
+
+module.exports = { login_post, login_get, login_delete, login_put};

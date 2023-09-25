@@ -47,5 +47,22 @@ const getPost = ('/', async (req, res) => {
         res.status(400).json({ Message: 'Something went wrong!' })
     }
 })
-module.exports = { setPost, getPost };
+const putPost = ('/:_id', async (req, res) => {
+    try {
+        const allRegisteredUsers = await User.findOne();
+        res.status(200).json(allRegisteredUsers);
+    } catch (error) {
+        res.status(400).json({ Message: 'Something went wrong!' })
+    }
+})
+const deletePost = ('/:_id', async (req, res) => {
+    try {
+        const allRegisteredUsers = await User.findOne();
+        res.status(200).json(allRegisteredUsers);
+    } catch (error) {
+        res.status(400).json({ Message: 'Something went wrong!' })
+    }
+})
+
+module.exports = { setPost, getPost, deletePost, putPost};
 
