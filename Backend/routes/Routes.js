@@ -10,7 +10,7 @@ router.put('/:_id', putPost).delete('/:_id', deletePost);
 
 //login routes
 router.get('/login', login_get).post('/login', login_post);
-router.put('/login', login_put).delete('/:_id', login_delete);  
+router.put('/login/:_id', login_put).delete('/login/:_id', login_delete);  
 
 
 //portfolio route 
