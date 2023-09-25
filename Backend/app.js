@@ -13,7 +13,7 @@ const app = express();
 //calling db connection here
 connectionDb;
 
-//adding middlware
+//adding middlware  
 app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({extended: true, limit: '100mb'}));
