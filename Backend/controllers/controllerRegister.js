@@ -49,16 +49,16 @@ const getPost = ('/', async (req, res) => {
 })
 const putPost = ('/:_id', async (req, res) => {
     try {
-        const allRegisteredUsers = await User.findOne();
-        res.status(200).json(allRegisteredUsers);
+        const allRegisteredUsers = await User.findByIdAndUpdate(req.params._id);
+        res.status(200).json({Updated: `user with ${req.params._id}`});
     } catch (error) {
         res.status(400).json({ Message: 'Something went wrong!' })
     }
 })
 const deletePost = ('/:_id', async (req, res) => {
     try {
-        const allRegisteredUsers = await User.findOne();
-        res.status(200).json(allRegisteredUsers);
+        const allRegisteredUsers = await User.findByIdAndDelete(req.params._id);
+        res.status(200).json({Deleted: `User with ${req.params._id}`});
     } catch (error) {
         res.status(400).json({ Message: 'Something went wrong!' })
     }

@@ -36,8 +36,8 @@ const login_get = ('/login', async (req, res) => {
 });
 const login_put = ('/login/:_id', async (req, res) => {
     try {
-        const allLoginUsers = await User.findOne();
-        res.status(200).json(allLoginUsers);
+        const allLoginUsers = await User.findByIdAndUpdate(req.params._id);
+        res.status(200).json({Updated: `user with ${req.params._id}`});
     } catch (error) {
         res.status(400).json({ Message: 'Something went wrong!' })
     }
@@ -45,8 +45,8 @@ const login_put = ('/login/:_id', async (req, res) => {
 
 const login_delete = ('/login/:_id', async (req, res) => {
     try {
-        const allLoginUsers = await User.findOne();
-        res.status(200).json(allLoginUsers);
+        const allLoginUsers = await User.findByIdAndDelete(req.params._id);
+        res.status(200).json({Deleted: `user with ${req.params._id}`});
     } catch (error) {
         res.status(400).json({ Message: 'Something went wrong!' })
     }
