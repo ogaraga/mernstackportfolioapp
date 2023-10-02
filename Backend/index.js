@@ -4,9 +4,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const PORT = process.env.PORT || 8080
-const connectionDb = require('../config/dbase');
-const Routes = require('../routes/Routes');
-const errorHandler = require('../middleware/middlewareErrors');
+const connectionDb = require('./config/dbase');
+const Routes = require('./routes/Routes');
+const errorHandler = require('./middleware/middlewareErrors');
 
 //initialize express
 const app = express(); 
