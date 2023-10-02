@@ -23,3 +23,5 @@ app.use('/', Routes);
 
 //listening to the PORT
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
+
+module.exports = app;
