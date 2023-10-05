@@ -1,8 +1,8 @@
 const User = require('../model/Users');
-const JWT = require('jsonwebtoken');
+require('dotenv').config(); 
 const bcrypt = require('bcryptjs');
 require('dotenv').config(); 
-const {createToken, authenticate} = require('./auth');
+const {createToken} = require('./auth');
 const salt = bcrypt.genSaltSync(10);
 
 //register routes
@@ -68,7 +68,7 @@ const login_post = ('/login', async (req, res, next) => {
         else {
             if (await bcrypt.compare(password, userDetail.password)) {
                 const accessToken = createToken(userDetail);
-                 res.header(process.env.HEADER_KEY, accessToken,{maxAge: 60*60*24*30*1000, httpOnly: true}).json({
+                 res.header("Authorization", accessToken, {maxAge:60 * 1000}).json({
                     email: userDetail.email,
                     password: userDetail.password,
                     token: accessToken

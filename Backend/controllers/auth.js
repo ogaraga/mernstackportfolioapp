@@ -10,14 +10,13 @@ const createToken = (user)=>{
         email: user.email,
         id: user._id
      };
-    const accessToken = JWT.sign(userPayload, jwtSecret);
+    const accessToken = JWT.sign(userPayload, jwtSecret, {expiresIn: '60000'});
     return accessToken;
  }  
  // authenticate user
  const authenticate = async (req, res,next)=>{
-    const jwtHeaderKey = process.env.HEADER_KEY;
-    const jwtSecretKey = process.env.SECRET_KEY;   
-     const token = await req.header(jwtHeaderKey);
+     const jwtSecretKey = process.env.SECRET_KEY;   
+     const token = await req.header("Authorization");
      if (!token)
       return res.status(404).send('Jwt token must be provided!'); 
     try {
