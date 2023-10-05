@@ -72,7 +72,7 @@ const login_post = ('/login', async (req, res, next) => {
                     email: userDetail.email,
                     password: userDetail.password,
                     token: accessToken
-                });
+                }); 
             } else {
                 res.status(404).json('Missmatched credential(password must match!)')
 

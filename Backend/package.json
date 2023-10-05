@@ -4,8 +4,8 @@
   "description": "Mern Stack Portfolio App Project ",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
-   
+    "server": "nodemon index.js",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
