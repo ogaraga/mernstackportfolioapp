@@ -4,7 +4,8 @@
   "description": "Mern Stack Portfolio App Project ",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "build": "vercel-build"
   },
   "repository": {
     "type": "git",
