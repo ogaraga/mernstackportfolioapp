@@ -1,8 +1,8 @@
 //importing packages
 const router = require('express').Router();
-const {setPost, getPost, putPost, deletePost} = require('../controllers/controllerRegister');
-const { login_get, login_post, login_delete, login_put } = require('../controllers/controllerLogin');
-const getPort = require('../controllers/controllerPortfolio');
+const { authenticate } = require('../controllers/auth');
+const {setPost, getPost, putPost, deletePost} = require('../controllers/controllerAll');
+const { login_get, login_post, login_delete, login_put, getPort} = require('../controllers/controllerAll');
 
 //register routes
 router.get('/', getPost).post('/', setPost);
@@ -14,6 +14,6 @@ router.put('/login/:_id', login_put).delete('/login/:_id', login_delete);
 
 
 //portfolio route 
-router.get('/portfolio', getPort);
+router.get('/portfolio',authenticate, getPort);
 
 module.exports = router;

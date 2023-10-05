@@ -33,7 +33,7 @@ function Portfolio() {
   }
   const handleClick = (e) => {
     e.preventDefault();
-    navigate(setInit("https://ogaraga.github.io/ogaraga-portfolio/home.html"));
+    navigate(setInit("https://ogaraga.github.io/ogaraga-portfolio/"));
 
     function setTimeOver() {
       return navigate('/')
@@ -42,9 +42,6 @@ function Portfolio() {
   
     setTimeout(setTimeOver, 20000);
   };
-
-  
-
 
   return (
     <>

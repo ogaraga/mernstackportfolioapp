@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 8080
 const connectionDb = require('./config/dbase');
 const Routes = require('./routes/Routes');
 const errorHandler = require('./middleware/middlewareErrors');
+const cookieParser = require('cookie-parser');
 
 //initialize express
 const app = express(); 
@@ -19,9 +20,9 @@ app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({extended: true, limit: '100mb'}));
 app.use(errorHandler);
 app.use('/', Routes);
+app.use(cookieParser())
 
 
 //listening to the PORT
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
 
-module.exports = app;
